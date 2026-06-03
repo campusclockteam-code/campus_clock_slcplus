@@ -1,26 +1,15 @@
-<<<<<<< HEAD
-name: campus_clock_slc
-description: A Flutter project for Shyam Lal College
-publish_to: 'none'
-
-environment:
-  sdk: '>=3.0.0 <4.0.0'
-  flutter: '>=3.16.0'
-=======
 ﻿name: campus_clock_slc
 description: Campus Clock App for Shyam Lal College
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.19.0 <4.0.0'
-  flutter: '>=3.13.0'
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.16.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-<<<<<<< HEAD
   # Firebase
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.0
@@ -56,39 +45,13 @@ dependencies:
   # Utilities
   async: ^2.11.0
   cupertino_icons: ^1.0.8
-=======
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.10.0
-  cloud_firestore: ^4.14.0
-  firebase_messaging: ^14.6.0
-  flutter_svg: ^2.0.9
-  shared_preferences: ^2.2.2
-  image_picker: ^1.0.4
-  path_provider: ^2.1.1
-  path: 1.8.3
-  sqflite: ^2.2.8
-  qr_flutter: ^4.1.0
-  mobile_scanner: ^4.0.1
-  webview_flutter: ^4.4.2
-  url_launcher: ^6.2.1
-  fl_chart: ^0.63.0
-  intl: ^0.18.0
-  printing: ^5.11.1
-  share_plus: ^7.2.2
-  async: ^2.11.0
-  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
   assets:
-<<<<<<< HEAD
     - assets/logo/app_logo.svg
-=======
-    - assets/logo/app_logo.svg
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
