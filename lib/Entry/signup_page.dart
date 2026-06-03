@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,17 +16,13 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-<<<<<<< HEAD
+
   // ---------- Role selection ----------
   String? _selectedRole;
   bool _roleSelected = false;
 
   // Common fields
-=======
-  String? _selectedRole;
-  bool _roleSelected = false;
 
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -38,13 +34,9 @@ class _SignupPageState extends State<SignupPage> {
   bool _obscurePassword = true;
   bool _isValidatingRoll = false;
 
-<<<<<<< HEAD
-  final List<String> _genders = ['Male', 'Female', 'Other'];
-=======
-  // Removed "Other" from gender options
-  final List<String> _genders = ['Male', 'Female'];
 
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+  final List<String> _genders = ['Male', 'Female', 'Other'];
+
   Map<String, dynamic>? _fetchedStudentData;
 
   bool _showSuccess = false;
@@ -87,16 +79,14 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-<<<<<<< HEAD
+
               leading: Icon(Icons.school, color: Colors.blue),
-=======
-              leading: const Icon(Icons.school, color: Colors.blue),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
               title: const Text('Student'),
               onTap: () => Navigator.pop(context, 'student'),
             ),
             ListTile(
-<<<<<<< HEAD
+
               leading: Icon(Icons.assignment_ind, color: Colors.green),
               title: const Text('Teacher'),
               onTap: () => Navigator.pop(context, 'teacher'),
@@ -106,13 +96,7 @@ class _SignupPageState extends State<SignupPage> {
               title: const Text('Other'),
               onTap: () => Navigator.pop(context, 'other'),
             ),
-=======
-              leading: const Icon(Icons.assignment_ind, color: Colors.green),
-              title: const Text('Teacher'),
-              onTap: () => Navigator.pop(context, 'teacher'),
-            ),
-            // "Other" option removed ✅
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
           ],
         ),
       ),
@@ -127,12 +111,9 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
-<<<<<<< HEAD
+
   Future<Map<String, dynamic>?> _validateAndFetchStudent(String rollNumber) async {
-=======
-  Future<Map<String, dynamic>?> _validateAndFetchStudent(
-      String rollNumber) async {
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
     if (rollNumber.isEmpty) {
       setState(() => _fetchedStudentData = null);
       return null;
@@ -147,13 +128,9 @@ class _SignupPageState extends State<SignupPage> {
       if (!rollDoc.exists) {
         setState(() => _fetchedStudentData = null);
         ScaffoldMessenger.of(context).showSnackBar(
-<<<<<<< HEAD
+
           const SnackBar(content: Text('Invalid roll number. Contact admin.'), backgroundColor: Colors.orange),
-=======
-          const SnackBar(
-              content: Text('Invalid roll number. Contact admin.'),
-              backgroundColor: Colors.orange),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
         );
         return null;
       }
@@ -167,23 +144,13 @@ class _SignupPageState extends State<SignupPage> {
           .get();
 
       if (studentSnapshot.docs.isNotEmpty) {
-<<<<<<< HEAD
+
         final studentData = studentSnapshot.docs.first.data() as Map<String, dynamic>;
         if (studentData.containsKey('userId') && studentData['userId'] != null) {
           setState(() => _fetchedStudentData = null);
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('This roll number is already registered.'), backgroundColor: Colors.red),
-=======
-        final studentData =
-            studentSnapshot.docs.first.data() as Map<String, dynamic>;
-        if (studentData.containsKey('userId') &&
-            studentData['userId'] != null) {
-          setState(() => _fetchedStudentData = null);
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text('This roll number is already registered.'),
-                backgroundColor: Colors.red),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
           );
           return null;
         }
@@ -213,10 +180,9 @@ class _SignupPageState extends State<SignupPage> {
 
       final email = _emailController.text.trim();
       final password = _passwordController.text.trim();
-<<<<<<< HEAD
 
-=======
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
+
       String name = '';
       Map<String, dynamic>? studentData;
 
@@ -246,15 +212,10 @@ class _SignupPageState extends State<SignupPage> {
             .get();
 
         if (existingStudent.docs.isNotEmpty) {
-<<<<<<< HEAD
+
           final existingData = existingStudent.docs.first.data() as Map<String, dynamic>;
           if (existingData.containsKey('userId') && existingData['userId'] != null) {
-=======
-          final existingData =
-              existingStudent.docs.first.data() as Map<String, dynamic>;
-          if (existingData.containsKey('userId') &&
-              existingData['userId'] != null) {
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
             _showError('This roll number is already registered.');
             return;
           }
@@ -292,17 +253,10 @@ class _SignupPageState extends State<SignupPage> {
         userData['semester'] = studentData['semester'] ?? '';
         userData['section'] = studentData['section'] ?? '';
 
-<<<<<<< HEAD
+
         final studentId = 'student_${rollNumber}_${DateTime.now().millisecondsSinceEpoch}';
         await FirebaseFirestore.instance.collection('students').doc(studentId).set({
-=======
-        final studentId =
-            'student_${rollNumber}_${DateTime.now().millisecondsSinceEpoch}';
-        await FirebaseFirestore.instance
-            .collection('students')
-            .doc(studentId)
-            .set({
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
           'rollNo': rollNumber,
           'name': name,
           'email': email,
@@ -318,7 +272,7 @@ class _SignupPageState extends State<SignupPage> {
       } else if (_selectedRole == 'teacher') {
         userData['teacherName'] = name;
         userData['department'] = '';
-<<<<<<< HEAD
+
       } else {
         userData['otherType'] = true;
       }
@@ -326,15 +280,7 @@ class _SignupPageState extends State<SignupPage> {
       await FirebaseFirestore.instance.collection('users').doc(userId).set(userData);
 
       // Save to SharedPreferences
-=======
-      }
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .set(userData);
-
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('has_logged_in', true);
       await prefs.setString('user_email', email);
@@ -351,12 +297,9 @@ class _SignupPageState extends State<SignupPage> {
         await prefs.setString('roll_number', rollNumber);
         await prefs.setString('selected_course', studentData!['course'] ?? '');
         await prefs.setString('selected_year', studentData['year'] ?? '');
-<<<<<<< HEAD
+
         await prefs.setInt('selected_semester', _parseSemesterNumber(studentData['semester']));
-=======
-        await prefs.setInt(
-            'selected_semester', _parseSemesterNumber(studentData['semester']));
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
         await prefs.setString('selected_section', studentData['section'] ?? '');
         await prefs.setString('student_name', name);
         await prefs.setString('student_gender', _selectedGender!);
@@ -370,7 +313,7 @@ class _SignupPageState extends State<SignupPage> {
         await prefs.remove('selected_section');
         await prefs.remove('student_name');
         await prefs.remove('student_gender');
-<<<<<<< HEAD
+
       } else {
         await prefs.remove('roll_number');
         await prefs.remove('selected_course');
@@ -382,17 +325,10 @@ class _SignupPageState extends State<SignupPage> {
         await prefs.remove('teacher_name');
       }
 
-      // 🎉 Show success notification
-=======
-      }
+      // ðŸŽ‰ Show success notification
 
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
-      FCMService.showCustomNotification(
-        title: 'Welcome to Campus Clock! 🎉',
-        body: 'Your account has been created successfully, $name!',
-        context: context,
-      );
-<<<<<<< HEAD
+      FCMService.showCustomNotification(title: "Welcome!", body: "Account created");
+
 
       _showSuccessMessage('Account created successfully!');
       await Future.delayed(const Duration(milliseconds: 1500));
@@ -409,28 +345,7 @@ class _SignupPageState extends State<SignupPage> {
         message = 'Network error. Check your connection.';
       } else {
         message = 'Signup failed: ${e.message}';
-=======
-      _showSuccessMessage('Account created successfully!');
-      await Future.delayed(const Duration(milliseconds: 1500));
-      if (mounted) {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/home', (route) => false);
-      }
-    } on FirebaseAuthException catch (e) {
-      String message;
-      switch (e.code) {
-        case 'email-already-in-use':
-          message = 'Email already registered';
-          break;
-        case 'weak-password':
-          message = 'Password too weak (min 6 characters)';
-          break;
-        case 'network-request-failed':
-          message = 'Network error. Check your connection.';
-          break;
-        default:
-          message = 'Signup failed: ${e.message}';
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
       }
       _showError(message);
     } catch (e) {
@@ -461,35 +376,24 @@ class _SignupPageState extends State<SignupPage> {
 
   void _showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-<<<<<<< HEAD
+
       SnackBar(content: Text(message), backgroundColor: Colors.red, behavior: SnackBarBehavior.floating),
-=======
-      SnackBar(
-          content: Text(message),
-          backgroundColor: Colors.red,
-          behavior: SnackBarBehavior.floating),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
     );
   }
 
   void _navigateToLogin() {
-<<<<<<< HEAD
+
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
-=======
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginPage()));
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
   }
 
   @override
   Widget build(BuildContext context) {
     if (!_roleSelected) {
-<<<<<<< HEAD
+
       WidgetsBinding.instance.addPostFrameCallback((_) => _showRoleSelectionDialog());
-=======
-      WidgetsBinding.instance
-          .addPostFrameCallback((_) => _showRoleSelectionDialog());
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
     }
 
     return AnimatedBackground(
@@ -498,7 +402,7 @@ class _SignupPageState extends State<SignupPage> {
         body: SafeArea(
           child: _roleSelected
               ? SingleChildScrollView(
-<<<<<<< HEAD
+
             padding: const EdgeInsets.all(24),
             child: Form(
               key: _formKey,
@@ -559,7 +463,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('✓ Roll number verified', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green)),
+                            const Text('âœ“ Roll number verified', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green)),
                             const SizedBox(height: 4),
                             Text('Name: ${_fetchedStudentData!['name'] ?? 'N/A'}'),
                             Text('Course: ${_fetchedStudentData!['course'] ?? 'N/A'}'),
@@ -630,169 +534,12 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
           )
-=======
-                  padding: const EdgeInsets.all(24),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        const SizedBox(height: 40),
-                        Center(
-                          child: Container(
-                            width: 100,
-                            height: 100,
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(colors: [
-                                Color(0xFF667EEA),
-                                Color(0xFF764BA2)
-                              ]),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: SvgPicture.asset(
-                              'assets/logo/app_logo.svg',
-                              colorFilter: const ColorFilter.mode(
-                                  Colors.white, BlendMode.srcIn),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Text(
-                          '${_selectedRole!.toUpperCase()} Sign Up',
-                          style: const TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 20),
-                        if (_selectedRole == 'student') ...[
-                          _buildTextField(
-                            controller: _rollNumberController,
-                            label: 'Roll Number',
-                            icon: Icons.numbers,
-                            onChanged: (value) =>
-                                _validateAndFetchStudent(value.trim()),
-                            validator: (v) {
-                              if (v == null || v.trim().isEmpty)
-                                return 'Roll number required';
-                              if (int.tryParse(v.trim()) == null)
-                                return 'Must be numeric';
-                              return null;
-                            },
-                          ),
-                          const SizedBox(height: 8),
-                          if (_isValidatingRoll)
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Center(child: CircularProgressIndicator()),
-                            ),
-                          if (_fetchedStudentData != null && !_isValidatingRoll)
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: Colors.green.shade50,
-                                borderRadius: BorderRadius.circular(12),
-                                border:
-                                    Border.all(color: Colors.green.shade200),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text('✓ Roll number verified',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.green)),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                      'Name: ${_fetchedStudentData!['name'] ?? 'N/A'}'),
-                                  Text(
-                                      'Course: ${_fetchedStudentData!['course'] ?? 'N/A'}'),
-                                  Text(
-                                      'Year: ${_fetchedStudentData!['year'] ?? 'N/A'}'),
-                                  Text(
-                                      'Section: ${_fetchedStudentData!['section'] ?? 'N/A'}'),
-                                ],
-                              ),
-                            ),
-                        ],
-                        if (_selectedRole != 'student') ...[
-                          _buildTextField(
-                            controller: _nameController,
-                            label: 'Full Name',
-                            icon: Icons.person,
-                            validator: (v) => (v == null || v.trim().isEmpty)
-                                ? 'Name required'
-                                : null,
-                          ),
-                          const SizedBox(height: 16),
-                        ],
-                        _buildTextField(
-                          controller: _emailController,
-                          label: 'Email',
-                          icon: Icons.email,
-                          validator: (v) {
-                            if (v == null || v.trim().isEmpty)
-                              return 'Email required';
-                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(v))
-                              return 'Invalid email';
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        _buildTextField(
-                          controller: _passwordController,
-                          label: 'Password',
-                          icon: Icons.lock,
-                          obscureText: _obscurePassword,
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                                _obscurePassword
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.grey),
-                            onPressed: () => setState(
-                                () => _obscurePassword = !_obscurePassword),
-                          ),
-                          validator: (v) {
-                            if (v == null || v.isEmpty)
-                              return 'Password required';
-                            if (v.length < 6) return 'Minimum 6 characters';
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        _buildGenderSelector(),
-                        const SizedBox(height: 30),
-                        _buildSubmitButton(
-                            onPressed: _loading ? null : _signup),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('Already have an account? ',
-                                style: TextStyle(color: Colors.white70)),
-                            TextButton(
-                              onPressed: _navigateToLogin,
-                              child: const Text('Login',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    ),
-                  ),
-                )
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
               : const Center(child: CircularProgressIndicator()),
         ),
         floatingActionButton: _showSuccess
             ? Container(
-<<<<<<< HEAD
+
           color: Colors.black54,
           child: Center(
             child: Card(
@@ -815,33 +562,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
         )
-=======
-                color: Colors.black54,
-                child: Center(
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.check_circle,
-                              color: Colors.green, size: 60),
-                          const SizedBox(height: 16),
-                          Text(_successMessage,
-                              style: const TextStyle(fontSize: 18)),
-                          const SizedBox(height: 16),
-                          ElevatedButton(
-                            onPressed: () =>
-                                setState(() => _showSuccess = false),
-                            child: const Text('Continue'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
             : null,
       ),
     );
@@ -859,16 +580,9 @@ class _SignupPageState extends State<SignupPage> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-<<<<<<< HEAD
+
         boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 15, spreadRadius: 2)],
-=======
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 15,
-              spreadRadius: 2)
-        ],
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
       ),
       child: TextFormField(
         controller: controller,
@@ -895,12 +609,9 @@ class _SignupPageState extends State<SignupPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-<<<<<<< HEAD
+
         const Text('Gender', style: TextStyle(color: Colors.white70, fontSize: 14)),
-=======
-        const Text('Gender',
-            style: TextStyle(color: Colors.white70, fontSize: 14)),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
         const SizedBox(height: 8),
         Wrap(
           spacing: 12,
@@ -909,19 +620,12 @@ class _SignupPageState extends State<SignupPage> {
             return FilterChip(
               label: Text(gender),
               selected: isSelected,
-<<<<<<< HEAD
+
               onSelected: (selected) => setState(() => _selectedGender = selected ? gender : null),
               selectedColor: Colors.blue.shade100,
               backgroundColor: Colors.white.withOpacity(0.2),
               labelStyle: TextStyle(color: isSelected ? Colors.blue.shade800 : Colors.white),
-=======
-              onSelected: (selected) =>
-                  setState(() => _selectedGender = selected ? gender : null),
-              selectedColor: Colors.blue.shade100,
-              backgroundColor: Colors.white.withOpacity(0.2),
-              labelStyle: TextStyle(
-                  color: isSelected ? Colors.blue.shade800 : Colors.white),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
             );
           }).toList(),
         ),
@@ -937,7 +641,7 @@ class _SignupPageState extends State<SignupPage> {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
-<<<<<<< HEAD
+
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           elevation: 5,
         ),
@@ -955,28 +659,6 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
-=======
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          elevation: 5,
-        ),
-        child: _loading
-            ? const SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(strokeWidth: 2))
-            : const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.person_add, size: 24),
-                  SizedBox(width: 12),
-                  Text('Create Account',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-                ],
-              ),
-      ),
-    );
-  }
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
+
+

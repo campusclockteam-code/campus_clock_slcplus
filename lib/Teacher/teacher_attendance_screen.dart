@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
@@ -11,11 +11,9 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'attendance_database.dart';
 import 'AttendanceAnalysisScreen.dart';
-<<<<<<< HEAD
-import '../Service/fcm_service.dart';
-=======
+
 import '../service/fcm_service.dart';
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class TeacherAttendanceScreen extends StatefulWidget {
@@ -198,9 +196,8 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
           userId: studentUserId,
           title: 'Attendance Marked',
           body: present
-              ? '✓ You have been marked PRESENT for ${DateFormat('dd MMM yyyy').format(DateTime.now())}'
-              : '✗ You have been marked ABSENT for ${DateFormat('dd MMM yyyy').format(DateTime.now())}',
-          senderName: _teacherName!,
+              ? 'âœ“ You have been marked PRESENT for ${DateFormat('dd MMM yyyy').format(DateTime.now())}'
+              : 'âœ— You have been marked ABSENT for ${DateFormat('dd MMM yyyy').format(DateTime.now())}',
           additionalData: {'course': _selectedCourse, 'rollNumber': rollNumber},
         );
       }
@@ -543,7 +540,7 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
         'markedVia': 'QR',
       });
 
-      _showSnackBar('✓ ${student['name']} marked present for $qrDate');
+      _showSnackBar('âœ“ ${student['name']} marked present for $qrDate');
       await _sendAttendanceNotification(student['id'], true);
 
       if (qrDate == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
@@ -1000,8 +997,10 @@ class ScannerOverlayPainter extends CustomPainter {
   }
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
+
+
+
+

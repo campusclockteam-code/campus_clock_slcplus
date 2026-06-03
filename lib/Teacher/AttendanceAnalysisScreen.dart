@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'attendance_database.dart';
@@ -57,16 +57,10 @@ class _AttendanceAnalysisScreenState extends State<AttendanceAnalysisScreen> {
     }
     _studentAttendance = studentMap.values.toList();
     _totalStudents = _studentAttendance.length;
-<<<<<<< HEAD
+
     _totalPresentDays = _studentAttendance.fold(0, (sum, s) => sum + s.presentDays);
     final totalPossibleDays = _studentAttendance.fold(0, (sum, s) => sum + s.totalDays);
-=======
-    _totalPresentDays = _studentAttendance.fold(0, (sum, s) => sum + (s.presentDays ?? 0));
-    int totalPossibleDays = 0;
-for (var s in _studentAttendance) {
-  totalPossibleDays += (s.totalDays ?? 0);
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
     _averageAttendance = totalPossibleDays > 0 ? (_totalPresentDays / totalPossibleDays) * 100 : 0;
 
     setState(() => _isLoading = false);
@@ -177,13 +171,10 @@ for (var s in _studentAttendance) {
                         reservedSize: 60,
                       ),
                     ),
-<<<<<<< HEAD
+
                     rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-=======
-                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
                   ),
                   borderData: FlBorderData(show: false),
                   barGroups: _studentAttendance.asMap().entries.map((entry) {
@@ -265,8 +256,6 @@ class StudentAttendance {
     required this.totalDays,
     required this.presentDays,
   });
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

@@ -1,4 +1,4 @@
-import 'package:sqflite/sqflite.dart';
+﻿import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
@@ -309,8 +309,6 @@ class AttendanceDatabase {
     await db.delete('attendance');
     await db.delete('students');
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

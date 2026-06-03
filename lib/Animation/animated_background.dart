@@ -1,4 +1,4 @@
-// animated_background.dart
+﻿// animated_background.dart
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
@@ -32,13 +32,10 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
         x: math.Random().nextDouble() * 100,
         y: math.Random().nextDouble() * 100,
         size: math.Random().nextDouble() * 3 + 1,
-<<<<<<< HEAD
+
         speed: math.Random().nextDouble() * 0.5 + 0.1,
         opacity: math.Random().nextDouble() * 0.3 + 0.1,
-=======
-        speed: math.Random().nextDouble() * 0.5 + (0.1 ?? 0),
-        opacity: math.Random().nextDouble() * 0.3 + (0.1 ?? 0),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
       ));
     }
   }
@@ -84,8 +81,6 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
     _particleController.dispose();
     super.dispose();
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

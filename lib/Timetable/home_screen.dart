@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 import 'timetable_web_screen.dart';
@@ -493,7 +493,7 @@ class _TimetableTabState extends State<_TimetableTab> with SingleTickerProviderS
         // This is the EXACT dropdown value (e.g., "B.A.(Prog.)")
         _userClassName = prefs.getString('selected_course');
 
-        // Handle semester – it could be stored as int or string
+        // Handle semester â€“ it could be stored as int or string
         final semesterObj = prefs.get('selected_semester');
         if (semesterObj is String) {
           _userSemester = semesterObj;
@@ -636,7 +636,7 @@ class _TimetableTabState extends State<_TimetableTab> with SingleTickerProviderS
           const SizedBox(height: 4),
           // Hindi Text
           const Text(
-            'श्याम लाल कॉलेज',
+            'à¤¶à¥à¤¯à¤¾à¤® à¤²à¤¾à¤² à¤•à¥‰à¤²à¥‡à¤œ',
             style: TextStyle(
               fontSize: 18,
               color: Colors.white,
@@ -1328,8 +1328,6 @@ class _TimetableTabState extends State<_TimetableTab> with SingleTickerProviderS
       ),
     );
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

@@ -1,4 +1,4 @@
-// lib/splash_screen.dart
+﻿// lib/splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {   // ✅ allows multiple tickers
+    with TickerProviderStateMixin {   // âœ… allows multiple tickers
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
@@ -159,7 +159,7 @@ class _SplashScreenState extends State<SplashScreen>
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Shyam Lal College • University of Delhi',
+                          'Shyam Lal College â€¢ University of Delhi',
                           style: TextStyle(fontSize: 14, color: Colors.white70),
                         ),
                       ],
@@ -230,8 +230,6 @@ class _CustomLoaderState extends State<_CustomLoader> with SingleTickerProviderS
       ),
     );
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

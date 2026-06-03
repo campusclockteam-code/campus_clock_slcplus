@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,86 +11,24 @@ import 'Home/Home_page.dart';
 import 'Admin/AdminScreen.dart';
 import 'Timetable/home_screen.dart';
 
-<<<<<<< HEAD
-=======
-// Handle background messages
-@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  print('Handling a background message: ${message.messageId}');
-  print('Message title: ${message.notification?.title}');
-  print('Message body: ${message.notification?.body}');
-}
 
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
   await Firebase.initializeApp();
-<<<<<<< HEAD
+
   // Initialize FCM Service (this handles permissions, token, and notifications)
   await FCMService.initialize();
   // Get FCM token for debugging
   String? token = await FirebaseMessaging.instance.getToken();
-  print('✅ FCM Token: $token');
+  print('âœ… FCM Token: $token');
   // Subscribe to general topics
   await FirebaseMessaging.instance.subscribeToTopic('all_users');
-  print('✅ Subscribed to all_users topic');
+  print('âœ… Subscribed to all_users topic');
 
-=======
 
-  // Set background message handler
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  // Initialize FCM Service
-  await FCMService.initialize();
-
-  // Request notification permissions
-  NotificationSettings settings =
-      await FirebaseMessaging.instance.requestPermission(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-  print('Notification permission: ${settings.authorizationStatus}');
-
-  // Get FCM token
-  String? token = await FirebaseMessaging.instance.getToken();
-  print('✅ FCM Token: $token');
-
-  // Subscribe to topics
-  await FirebaseMessaging.instance.subscribeToTopic('all_users');
-  print('✅ Subscribed to all_users topic');
-
-  // Handle foreground messages (app is open)
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('📱 Got a message while in foreground!');
-    print('Title: ${message.notification?.title}');
-    print('Body: ${message.notification?.body}');
-
-    // Show in-app notification using your FCMService
-    if (message.notification != null && message.notification!.title != null) {
-      // You can show a dialog or use your existing method
-      // For now, let's show a SnackBar
-      // This will be visible when app is open
-    }
-  });
-
-  // Handle when app is opened from a terminated state
-  RemoteMessage? initialMessage =
-      await FirebaseMessaging.instance.getInitialMessage();
-  if (initialMessage != null) {
-    print('App opened from terminated state by notification');
-  }
-
-  // Handle when app is in background and opened by notification
-  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    print('App opened from background by notification');
-    // Navigate to specific screen if needed
-  });
-
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
   runApp(const MyApp());
 }
 
@@ -117,7 +55,7 @@ class MyApp extends StatelessWidget {
         '/admin': (context) => const AdminScreen(),
         '/notifications': (context) => const NotificationsScreen(),
       },
-<<<<<<< HEAD
+
       // Handle navigation when notification is tapped
       onGenerateRoute: (settings) {
         switch (settings.name) {
@@ -133,8 +71,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-=======
-    );
-  }
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

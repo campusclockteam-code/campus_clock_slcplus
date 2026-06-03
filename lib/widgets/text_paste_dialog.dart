@@ -1,4 +1,4 @@
-// lib/widgets/text_paste_dialog.dart
+﻿// lib/widgets/text_paste_dialog.dart
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -226,10 +226,10 @@ class _TextPasteDialogState extends State<TextPasteDialog> {
                       'OR Space-separated format:\n'
                       '250033 AVNEET KAUR SALUJA\n'
                       '250034 PIYUSH GUPTA\n\n'
-                      '• Roll Number must be numeric\n'
-                      '• Name can have multiple words\n'
-                      '• Duplicate roll numbers will be skipped\n'
-                      '• Headers will be automatically detected and skipped',
+                      'â€¢ Roll Number must be numeric\n'
+                      'â€¢ Name can have multiple words\n'
+                      'â€¢ Duplicate roll numbers will be skipped\n'
+                      'â€¢ Headers will be automatically detected and skipped',
                   style: TextStyle(fontSize: 12),
                 ),
               ],
@@ -586,9 +586,9 @@ class _TextPasteDialogState extends State<TextPasteDialog> {
 
     // Notify completion with detailed message
     if (duplicateCount > 0) {
-      _showSnackBar('✅ Added ${_processedCount} students. ⚠️ $duplicateCount duplicates skipped.');
+      _showSnackBar('âœ… Added ${_processedCount} students. âš ï¸ $duplicateCount duplicates skipped.');
     } else {
-      _showSnackBar('✅ Successfully added ${_processedCount} students');
+      _showSnackBar('âœ… Successfully added ${_processedCount} students');
     }
 
     widget.onBatchComplete(_processedCount);
@@ -632,8 +632,6 @@ class _TextPasteDialogState extends State<TextPasteDialog> {
       ),
     );
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

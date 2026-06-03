@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -35,7 +35,7 @@ class _StudentQRCodeScreenState extends State<StudentQRCodeScreen> {
       if (mounted) {
         final result = await Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ProfileScreen(isFirstTime: false)),
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
         );
         if (result == true) {
           await _loadStudentData();
@@ -126,8 +126,8 @@ class _StudentQRCodeScreenState extends State<StudentQRCodeScreen> {
       return '';
     }
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
+
+

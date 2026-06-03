@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:campus_clock_slc/Teacher/attendance_database.dart';
@@ -181,21 +181,14 @@ class _StudentAttendanceAnalyticsScreenState extends State<StudentAttendanceAnal
                         },
                       ),
                     ),
-<<<<<<< HEAD
+
                     rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                   ),
                   borderData: FlBorderData(show: false),
                   barGroups: _getMonthlyData(),
                   gridData: const FlGridData(show: true, drawVerticalLine: false),
-=======
-                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  ),
-                  borderData: FlBorderData(show: false),
-                  barGroups: _getMonthlyData(),
-                  gridData: FlGridData(show: true, drawVerticalLine: false),
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
                 ),
               ),
             ),
@@ -254,7 +247,7 @@ class _StudentAttendanceAnalyticsScreenState extends State<StudentAttendanceAnal
     final Map<int, List<AttendanceRecord>> monthlyMap = {};
     for (var record in _records) {
       final date = DateTime.parse(record.date);
-      final month = date.month - 1; // 0‑based
+      final month = date.month - 1; // 0â€‘based
       monthlyMap.putIfAbsent(month, () => []);
       monthlyMap[month]!.add(record);
     }
@@ -275,8 +268,6 @@ class _StudentAttendanceAnalyticsScreenState extends State<StudentAttendanceAnal
       );
     });
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+

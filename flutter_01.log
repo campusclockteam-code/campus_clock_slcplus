@@ -1,0 +1,103 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter pub get
+
+## exception
+
+FileSystemException: FileSystemException: Failed to decode data using encoding 'utf-8', path = 'C:\Users\suraj\StudioProjects\campus_clock_slc\android\gradle.properties'
+
+```
+#0      _File._tryDecode (dart:io/file_impl.dart:615:7)
+#1      _File.readAsStringSync (dart:io/file_impl.dart:624:7)
+#2      ForwardingFile.readAsStringSync (package:file/src/forwarding/forwarding_file.dart:99:16)
+#3      ErrorHandlingFile.readAsStringSync.<anonymous closure> (package:flutter_tools/src/base/error_handling_io.dart:217:22)
+#4      _runSync (package:flutter_tools/src/base/error_handling_io.dart:587:14)
+#5      ErrorHandlingFile.readAsStringSync (package:flutter_tools/src/base/error_handling_io.dart:216:12)
+#6      isAppUsingAndroidX (package:flutter_tools/src/android/gradle.dart:954:21)
+#7      _writeAndroidPluginRegistrant (package:flutter_tools/src/flutter_plugins.dart:328:17)
+#8      injectPlugins (package:flutter_tools/src/flutter_plugins.dart:1077:11)
+<asynchronous suspension>
+#9      FlutterProject.ensureReadyForPlatformSpecificTooling (package:flutter_tools/src/project.dart:386:5)
+<asynchronous suspension>
+#10     PackagesGetCommand.runCommand (package:flutter_tools/src/commands/packages.dart:383:7)
+<asynchronous suspension>
+#11     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1394:27)
+<asynchronous suspension>
+#12     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#13     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#14     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:372:9)
+<asynchronous suspension>
+#15     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#16     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:308:5)
+<asynchronous suspension>
+#17     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:130:9)
+<asynchronous suspension>
+#18     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#19     main (package:flutter_tools/executable.dart:93:3)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[33m[!][39m Flutter (Channel [user-branch], 3.22.0, on Microsoft Windows [Version 10.0.19045.6466], locale en-US)
+    [33m![39m Flutter version 3.22.0 on channel [user-branch] at C:\Users\suraj\Downloads\flutter_windows_3.38.5-stable\flutter
+      Currently on an unknown channel. Run `flutter channel` to switch to an official channel.
+      If that doesn't fix the issue, reinstall Flutter by following instructions at
+      https://flutter.dev/docs/get-started/install.
+    [33m![39m Upstream repository unknown source is not a standard remote.
+      Set environment variable "FLUTTER_GIT_URL" to unknown source to dismiss this error.
+    [32m•[39m Framework revision 5dcb86f68f (2 years, 1 month ago), 2024-05-09 07:39:20 -0500
+    [32m•[39m Engine revision f6344b75dc
+    [32m•[39m Dart version 3.4.0
+    [32m•[39m DevTools version 2.34.3
+    [32m•[39m If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly
+      to perform update checks and upgrades.
+
+[32m[✓][39m Windows Version (Installed version of Windows is version 10 or higher)
+
+[32m[✓][39m Android toolchain - develop for Android devices (Android SDK version 37.0.0)
+    [32m•[39m Android SDK at C:\Users\suraj\AppData\Local\Android\Sdk
+    [32m•[39m Platform android-37.0, build-tools 37.0.0
+    [32m•[39m ANDROID_HOME = C:\Users\suraj\AppData\Local\Android\Sdk
+    [32m•[39m Java binary at: C:\Program Files\Java\jdk-17\bin\java
+    [32m•[39m Java version Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+    [32m•[39m All Android licenses accepted.
+
+[31m[✗][39m Chrome - develop for the web (Cannot find Chrome executable at .\Google\Chrome\Application\chrome.exe)
+    [33m![39m Cannot find Chrome. Try setting CHROME_EXECUTABLE to a Chrome executable.
+
+[31m[✗][39m Visual Studio - develop Windows apps
+    [31m✗[39m Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[32m[✓][39m Android Studio (version 2025.2.2)
+    [32m•[39m Android Studio at C:\Program Files\Android\Android Studio
+    [32m•[39m Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    [32m•[39m Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    [32m•[39m Java version OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+
+[32m[✓][39m VS Code (version unknown)
+    [32m•[39m VS Code at C:\Users\suraj\AppData\Local\Programs\Microsoft VS Code
+    [32m•[39m Flutter extension version 3.136.0
+    [31m✗[39m Unable to determine VS Code version.
+
+[32m[✓][39m Connected device (2 available)
+    [32m•[39m Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.19045.6466]
+    [32m•[39m Edge (web)        • edge    • web-javascript • Microsoft Edge 148.0.3967.96
+
+[32m[✓][39m Network resources
+    [32m•[39m All expected network resources are available.
+
+[33m![39m Doctor found issues in 3 categories.
+```

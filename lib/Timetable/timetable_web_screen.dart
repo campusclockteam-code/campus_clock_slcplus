@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
@@ -377,8 +377,6 @@ class _TimetableWebScreenState extends State<TimetableWebScreen> {
     _loadTimeoutTimer?.cancel();
     super.dispose();
   }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+
