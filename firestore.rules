@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Simple admin check - use email first
+    function isAdmin() {
+      return request.auth != null && 
+             (request.auth.token.email == 'admin@campusclock.com' || 
+              request.auth.token.email == 'surajncc2006@gmail.com');
+    }
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isTeacher() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher';
+    }
+    
+    function isStudent() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'student';
+    }
+    
+    // ============================================
+    // USERS COLLECTION - Allow admin to access
+    // ============================================
+    match /users/{userId} {
+      allow read, write, update, delete: if isAdmin() || userId == request.auth.uid;
+      allow create: if isAuthenticated();
+      allow list: if isAdmin();
+    }
+    
+    // ============================================
+    // ATTENDANCE - Admin can read/write
+    // ============================================
+    match /attendance/{document} {
+      allow read: if isAuthenticated();
+      allow write, create, update, delete: if isAdmin() || isTeacher();
+    }
+    
+    match /attendance_records/{document} {
+      allow read: if isAuthenticated();
+      allow write, create, update, delete: if isAdmin() || isTeacher();
+    }
+    
+    // ============================================
+    // STUDENTS - Admin can do everything
+    // ============================================
+    match /students/{studentId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isAdmin() || isTeacher();
+    }
+    
+    // ============================================
+    // NOTIFICATIONS
+    // ============================================
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isAdmin() || notificationId == request.auth.uid;
+    }
+    
+    // ============================================
+    // COURSES & TIMETABLE - Read for all, write for admin
+    // ============================================
+    match /courses/{document} {
+      allow read: if true;
+      allow write, create, update, delete: if isAdmin();
+    }
+    
+    match /timetable/{document} {
+      allow read: if true;
+      allow write, create, update, delete: if isAdmin();
+    }
+    
+    // ============================================
+    // ADMIN ONLY COLLECTIONS
+    // ============================================
+    match /admin_messages/{document} { 
+      allow read, write, create, update, delete: if isAdmin(); 
+    }
+    
+    match /login_attempts/{document} { 
+      allow read, write, create, update, delete: if isAdmin(); 
+      allow create: if isAuthenticated(); 
+    }
+    
+    match /admin_audit_logs/{document} { 
+      allow read, write, create, update, delete: if isAdmin(); 
+    }
+    
+    match /admin_settings/{document} { 
+      allow read, write, create, update, delete: if isAdmin(); 
+    }
+    
+    match /analytics/{document} { 
+      allow read, write, create, update, delete: if isAdmin(); 
+    }
+    
+    match /qr_codes/{document} {
+      allow read: if isAuthenticated();
+      allow create, write, update, delete: if isAdmin() || isTeacher();
+    }
+    
+    // ============================================
+    // DEFAULT BLOCK
+    // ============================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

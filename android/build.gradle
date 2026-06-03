@@ -1,0 +1,37 @@
+buildscript {
+<<<<<<< HEAD
+    ext.kotlin_version = '2.1.0'           // updated from 1.9.22
+=======
+    ext.kotlin_version = '1.9.0'
+>>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+<<<<<<< HEAD
+        classpath 'com.android.tools.build:gradle:8.9.1'   // updated from 8.5.0
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.2'
+=======
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15'
+>>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> bc2b2c64137aab7c4305e63ef6af08c1cfdd88d8
