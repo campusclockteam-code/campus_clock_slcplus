@@ -11,7 +11,7 @@ import 'dart:io';
 import '../Student/student_qr_screen.dart';
 import '../basic_feture/ProfileScreen.dart';
 
-import '../Service/notifications_screen.dart';
+import '../service/notifications_screen.dart';
 
 import '../Teacher/teacher_attendance_screen.dart';
 import '../basic_feture/SettingsScreen.dart';
