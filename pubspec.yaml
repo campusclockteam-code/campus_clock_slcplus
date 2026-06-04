@@ -8,19 +8,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Firebase
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
   firebase_messaging: ^14.7.10
+
+  # UI
   cupertino_icons: ^1.0.6
   flutter_local_notifications: ^16.3.0
   flutter_svg: ^2.0.9
+  google_fonts: ^6.1.0
+
+  # QR Code
   qr_flutter: ^4.1.0
   mobile_scanner: ^4.0.1
+
+  # Storage & Database
   shared_preferences: ^2.2.2
   path_provider: ^2.1.1
-  path: ^1.9.0
+  path: 1.8.3
   sqflite: ^2.3.0
+
+  # Utilities
   intl: ^0.18.1
   url_launcher: ^6.2.1
   image_picker: ^1.0.4
