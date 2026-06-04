@@ -17,11 +17,22 @@ jobs:
         GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
       run: |
         if [ -n "$GOOGLE_SERVICES_JSON" ]; then
+          mkdir -p android/app
           echo "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
           echo "✓ google-services.json created"
         else
           echo "⚠️ GOOGLE_SERVICES_JSON secret not found"
+          echo "Creating dummy file for build..."
+          echo '{
+            "project_info": {"project_id": "dummy"},
+            "client": [{"client_info": {"mobilesdk_app_id": "1:000:android:000", "android_client_info": {"package_name": "com.example.campus_clock_slc"}}}]
+          }' > android/app/google-services.json
         fi
+    
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
     
     - uses: subosito/flutter-action@v2
       with:
@@ -37,5 +48,6 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: campus-clock-slc
+        name: Campus-Clock-SLC
         path: build/app/outputs/flutter-apk/app-release.apk
+        retention-days: 30
