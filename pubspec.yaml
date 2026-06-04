@@ -28,7 +28,7 @@ dependencies:
   # Storage & Database
   shared_preferences: ^2.2.2
   path_provider: ^2.1.1
-  path: 1.8.3
+  path: ^1.9.1
   sqflite: ^2.3.0
 
   # Utilities
