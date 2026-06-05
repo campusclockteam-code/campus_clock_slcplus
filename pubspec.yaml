@@ -10,41 +10,41 @@ dependencies:
     sdk: flutter
 
   # Firebase
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.16.0
-  cloud_firestore: ^4.14.0
-  firebase_messaging: ^14.7.10
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.0
+  cloud_firestore: ^5.4.0
+  firebase_messaging: ^15.1.0
 
   # UI
-  cupertino_icons: ^1.0.6
-  flutter_local_notifications: ^16.3.0
-  flutter_svg: ^2.0.9
-  google_fonts: ^6.1.0
+  cupertino_icons: ^1.0.8
+  flutter_local_notifications: ^17.0.0
+  flutter_svg: ^2.0.10
+  google_fonts: ^6.2.1
 
   # QR Code
   qr_flutter: ^4.1.0
-  mobile_scanner: ^4.0.1
+  mobile_scanner: ^5.0.0
 
   # Storage & Database
-  shared_preferences: ^2.2.2
-  path_provider: ^2.1.1
-  path: ^1.9.1
-  sqflite: ^2.3.0
+  shared_preferences: ^2.3.0
+  path_provider: ^2.1.3
+  path: ^1.9.0
+  sqflite: ^2.3.3
 
   # Utilities
-  intl: ^0.18.1
-  url_launcher: ^6.2.1
-  image_picker: ^1.0.4
-  printing: ^5.11.1
-  share_plus: ^7.2.2
-  fl_chart: ^0.63.0
-  webview_flutter: ^4.4.0
+  intl: ^0.19.0
+  url_launcher: ^6.3.0
+  image_picker: ^1.1.0
+  printing: ^5.12.0
+  share_plus: ^10.0.0
+  fl_chart: ^0.68.0
+  webview_flutter: ^4.8.0
   async: ^2.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
