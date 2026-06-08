@@ -1,28 +1,37 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Simple admin check - use email first
+
+    // Admin: email allowlist (case-insensitive) or users doc flag — matches login_page.dart
     function isAdmin() {
-      return request.auth != null && 
-             (request.auth.token.email == 'admin@campusclock.com' || 
-              request.auth.token.email == 'surajncc2006@gmail.com');
+      return request.auth != null &&
+             (
+               request.auth.token.email.lower() == 'admin@campusclock.com' ||
+               request.auth.token.email.lower() == 'surajncc2006@gmail.com' ||
+               (
+                 exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+                 (
+                   get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true ||
+                   get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
+                 )
+               )
+             );
     }
-    
+
     function isAuthenticated() {
       return request.auth != null;
     }
-    
+
     function isTeacher() {
-      return isAuthenticated() && 
+      return isAuthenticated() &&
              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher';
     }
-    
+
     function isStudent() {
-      return isAuthenticated() && 
+      return isAuthenticated() &&
              get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'student';
     }
-    
+
     // ============================================
     // USERS COLLECTION - Allow admin to access
     // ============================================
@@ -31,7 +40,7 @@ service cloud.firestore {
       allow create: if isAuthenticated();
       allow list: if isAdmin();
     }
-    
+
     // ============================================
     // ATTENDANCE - Admin can read/write
     // ============================================
@@ -39,12 +48,12 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       allow write, create, update, delete: if isAdmin() || isTeacher();
     }
-    
+
     match /attendance_records/{document} {
       allow read: if isAuthenticated();
       allow write, create, update, delete: if isAdmin() || isTeacher();
     }
-    
+
     // ============================================
     // STUDENTS - Admin can do everything
     // ============================================
@@ -52,7 +61,7 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       allow create, update, delete: if isAdmin() || isTeacher();
     }
-    
+
     // ============================================
     // NOTIFICATIONS
     // ============================================
@@ -61,7 +70,7 @@ service cloud.firestore {
       allow create: if isAuthenticated();
       allow update, delete: if isAdmin() || notificationId == request.auth.uid;
     }
-    
+
     // ============================================
     // COURSES & TIMETABLE - Read for all, write for admin
     // ============================================
@@ -69,41 +78,41 @@ service cloud.firestore {
       allow read: if true;
       allow write, create, update, delete: if isAdmin();
     }
-    
+
     match /timetable/{document} {
       allow read: if true;
       allow write, create, update, delete: if isAdmin();
     }
-    
+
     // ============================================
     // ADMIN ONLY COLLECTIONS
     // ============================================
-    match /admin_messages/{document} { 
-      allow read, write, create, update, delete: if isAdmin(); 
+    match /admin_messages/{document} {
+      allow read, write, create, update, delete: if isAdmin();
     }
-    
-    match /login_attempts/{document} { 
-      allow read, write, create, update, delete: if isAdmin(); 
-      allow create: if isAuthenticated(); 
+
+    match /login_attempts/{document} {
+      allow read, write, update, delete: if isAdmin();
+      allow create: if isAuthenticated();
     }
-    
-    match /admin_audit_logs/{document} { 
-      allow read, write, create, update, delete: if isAdmin(); 
+
+    match /admin_audit_logs/{document} {
+      allow read, write, create, update, delete: if isAdmin();
     }
-    
-    match /admin_settings/{document} { 
-      allow read, write, create, update, delete: if isAdmin(); 
+
+    match /admin_settings/{document} {
+      allow read, write, create, update, delete: if isAdmin();
     }
-    
-    match /analytics/{document} { 
-      allow read, write, create, update, delete: if isAdmin(); 
+
+    match /analytics/{document} {
+      allow read, write, create, update, delete: if isAdmin();
     }
-    
+
     match /qr_codes/{document} {
       allow read: if isAuthenticated();
       allow create, write, update, delete: if isAdmin() || isTeacher();
     }
-    
+
     // ============================================
     // DEFAULT BLOCK
     // ============================================
